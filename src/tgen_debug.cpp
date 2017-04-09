@@ -103,20 +103,20 @@ namespace
                              double                           vScale,
                              std::stringstream              & ss       )
     {
-        ss << "    <Shape>" << std::endl;
-        ss << "      <Appearance>" << std::endl;
+        ss << "    <Shape>" << '\n';
+        ss << "      <Appearance>" << '\n';
         ss << "        <Material emissiveColor=\"" << colorStr << "\"/>"
-                            << std::endl;                
-        ss << "      </Appearance>" << std::endl;
+                            << '\n';                
+        ss << "      </Appearance>" << '\n';
         ss << "      <LineSet vertexCount=\"";
                             writeX3DLinesVCount(pos3D.size() / 3, ss);
                             ss << "\" >"
-                            << std::endl;
+                            << '\n';
         ss << "        <Coordinate point=\"";
                             writeX3DVecFieldLineData(pos3D, dir3D, vScale, ss);
-                            ss << "\"/>" << std::endl;
-        ss << "      </LineSet>" << std::endl;
-        ss << "    </Shape>" << std::endl;
+                            ss << "\"/>" << '\n';
+        ss << "      </LineSet>" << '\n';
+        ss << "    </Shape>" << '\n';
     }
 
     //-------------------------------------------------------------------------
@@ -178,39 +178,39 @@ namespace tgen
         std::stringstream sstr;
 
         // prologue
-        sstr << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" << std::endl;
+        sstr << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" << '\n';
         sstr << "<!DOCTYPE X3D PUBLIC \"ISO//Web3D//DTD X3D 3.0//EN\" "
              <<   "\"http://www.web3d.org/specifications/x3d-3.0.dtd\">"
-             << std::endl;
-        sstr << "<X3D>" << std::endl;
-        sstr << "  <Scene>" << std::endl;
+             << '\n';
+        sstr << "<X3D>" << '\n';
+        sstr << "  <Scene>" << '\n';
 
         // textured object
-        sstr << "    <Shape>" << std::endl;
-        sstr << "      <Appearance>" << std::endl;
-        sstr << "        <Material/>" << std::endl;        
-        sstr << "        <ImageTexture url=\"checker.png\">" << std::endl;
-        sstr << "          <TextureProperties magnificationFilter=\"NEAREST_PIXEL\"/>" << std::endl;
-        sstr << "        </ImageTexture>" << std::endl;
-        sstr << "      </Appearance>" << std::endl;
-        sstr << "      <IndexedFaceSet solid=\"false\"" << std::endl;
+        sstr << "    <Shape>" << '\n';
+        sstr << "      <Appearance>" << '\n';
+        sstr << "        <Material/>" << '\n';        
+        sstr << "        <ImageTexture url=\"checker.png\">" << '\n';
+        sstr << "          <TextureProperties magnificationFilter=\"NEAREST_PIXEL\"/>" << '\n';
+        sstr << "        </ImageTexture>" << '\n';
+        sstr << "      </Appearance>" << '\n';
+        sstr << "      <IndexedFaceSet solid=\"false\"" << '\n';
         sstr << "                      coordIndex   =\"";
                                             writeX3DTriIndexArray(triIndicesPos, sstr);
-                                            sstr << "\"" << std::endl;
+                                            sstr << "\"" << '\n';
         sstr << "                      texCoordIndex=\"";
                                             writeX3DTriIndexArray(triIndicesUV, sstr);
-                                            sstr << "\">" << std::endl;
+                                            sstr << "\">" << '\n';
         sstr << "        <Coordinate        point=\"";
                                             writeX3DArray(positions3D, sstr);
-                                            sstr << "\"/>" << std::endl;
+                                            sstr << "\"/>" << '\n';
         sstr << "        <Normal            vector=\"";
                                             writeX3DArray(normals3D, sstr);
-                                            sstr << "\"/>" << std::endl;
+                                            sstr << "\"/>" << '\n';
         sstr << "        <TextureCoordinate point=\"";
                                             writeX3DArray(uvs2D, sstr);
-                                            sstr << "\"/>" << std::endl;
-        sstr << "      </IndexedFaceSet>" << std::endl;
-        sstr << "    </Shape>" << std::endl;
+                                            sstr << "\"/>" << '\n';
+        sstr << "      </IndexedFaceSet>" << '\n';
+        sstr << "    </Shape>" << '\n';
 
         // vector field visualizations
         writeX3DVecFieldVis(positions3D, normals3D,    "0 0 1", vScale, sstr);
@@ -218,12 +218,12 @@ namespace tgen
         writeX3DVecFieldVis(positions3D, bitangents3D, "0 1 0", vScale, sstr);
 
         // epilogue
-        sstr << "  </Scene>" << std::endl;
-        sstr << "</X3D>"     << std::endl;
+        sstr << "  </Scene>" << '\n';
+        sstr << "</X3D>"     << '\n';
 
 
         std::ofstream fstr("tangents.x3d");
-        fstr << sstr.str() << std::endl;
+        fstr << sstr.str() << '\n';
     }
 
     //-------------------------------------------------------------------------    
