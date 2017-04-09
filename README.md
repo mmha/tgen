@@ -14,10 +14,20 @@ The code consists basically of one header + .cpp file.
 For debugging and visualization, there is also a simple X3D exporter in a separate file, which was used to generate the 3D visualizations shown below.
 The baked tangent-space normal maps are just provided for demonstration purposes, the actual baking code is not part of this repository.
 
-So far, the C++ code from this project has just been compiled and tested with VS 2015.
+So far, the C++ code from this project has just been compiled and tested with VS 2015, gcc 6.3 and clang 4.0.
 
 Feedback and contributions are always welcome. 
 
+## Building and installing
+
+TGen has no external dependencies and can be built using CMake 3.4 or greater:
+```
+cd <this-repo>
+mkdir build
+cd build
+cmake .. [-DCMAKE_BUILD_TYPE=Release] [-DTGEN_STATIC_LIBRARY=0] # Default is building as a shared library
+cmake --build . [--target install]
+```
 
 ## Results
 
