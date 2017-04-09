@@ -38,7 +38,7 @@ namespace tgen
                       const std::vector<tgen::RealT>   & uvs2D,
                       const std::vector<tgen::RealT>   & tangents3D,
                       const std::vector<tgen::RealT>   & bitangents3D,
-                      const char                       * filename      );
+                      const char                       * filename = "tangents.x3d");
 
     //-------------------------------------------------------------------------
     

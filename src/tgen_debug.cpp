@@ -222,7 +222,7 @@ namespace tgen
         sstr << "</X3D>"     << '\n';
 
 
-        std::ofstream fstr("tangents.x3d");
+        std::ofstream fstr(filename);
         fstr << sstr.str() << '\n';
     }
 

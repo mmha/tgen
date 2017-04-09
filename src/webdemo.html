@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+	<body>
+		<script>
+			var run = function() {
+				let res = Module.add(42, 23)
+				console.log(res)
+			}
+
+			var Module = {}
+			let xhr = new XMLHttpRequest()
+			xhr.open('GET', 'tgen.wasm')
+			xhr.responseType = 'arraybuffer'
+			xhr.onload = function() {
+				if(xhr.status == 404) {
+					console.log("wasm module not found - continuing with assumption that tgen has been compiled to asm.js")
+				}
+				else {
+					Module.wasmBinary = xhr.response
+				}
+
+				let script = document.createElement('script')
+				script.src = "tgen.js"
+				document.body.appendChild(script)
+
+				script.onload = run
+			}
+			xhr.send(null)
+		</script>
+	</body>
+</html>
